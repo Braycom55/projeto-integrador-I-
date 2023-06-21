@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>PI</title>
+    <style>
+        h2{
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 30px;
+            line-height: 37px;
+            text-align: left;
+            color: #FFFFFF;
+            margin-left: 7%;
+            margin-bottom: 15%;
+        }
+        #map {
+            height: 500px;
+            width: 500px;
+            float: right;
+        }
+        #search-bar {
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-class">
+              <div>
+                <a href="./index.html" class="title"><img src="./Ecoletar/Ecoletar.png" alt=""></a>
+              </div>
+                <a href="./index.html" class="pagina-inicial" style="color: #FFFFFF;">Página inicial</a>
+                <a href="#" class="rastreamento" style="color:#8FFF00 ;">Rastreamento</a>
+                <a href="./quem-somos.html" class="quem-somos">Quem somos</a>
+        </div>
+    </header>
+    <div id="search-bar" style="margin-top: 500px; margin-left: 80px;">
+        <label for="address-input">Digite seu endereço:</label>
+        <input type="text" id="address-input">
+        <button onclick="showAddress()">Mostrar Endereço</button>
+        <button onclick="showChart()" id="show-chart-btn" style="display: none; font-size: 20px; ">Cadastrar</button>
+    </div>
+    <div id="map" style="margin-top: 300px; margin-right: 500px;"></div>
+
+    <script>
+        var addressInput = document.getElementById('address-input');
+        var showChartBtn = document.getElementById('show-chart-btn');
+        var map;
+
+        // Inicializa o mapa
+        window.addEventListener('DOMContentLoaded', function() {
+            map = L.map('map').setView([0, 0], 13); // Define a visualização inicial do mapa
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { // Usa o OpenStreetMap como camada base
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                maxZoom: 18
+            }).addTo(map);
+        });
+
+        function showAddress() {
+            var address = addressInput.value;
+
+            if (address.trim() !== '') {
+                // Limpa a camada anterior com o endereço
+                map.eachLayer(function (layer) {
+                    if (layer instanceof L.Marker) {
+                        map.removeLayer(layer);
+                    }
+                });
+
+                // Mostra o novo endereço no mapa
+                var geocodeUrl = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(address);
+                fetch(geocodeUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.length > 0) {
+                            var lat = parseFloat(data[0].lat);
+                            var lon = parseFloat(data[0].lon);
+                            var marker = L.marker([lat, lon]).addTo(map);
+                            marker.bindPopup('Endereço: ' + address).openPopup();
+                            map.setView([lat, lon], 13);
+                        } else {
+                            alert('Não foi possível encontrar o endereço no mapa.');
+                        }
+                    });
+
+                showChartBtn.style.display = 'block'; // Mostrar botão "Mostrar Gráfico"
+            }
+        }
+
+        function showChart() {
+            var addresses = localStorage.getItem('addresses');
+
+            if (addresses) {
+                localStorage.setItem('addresses', addresses + ',' + addressInput.value);
+            } else {
+                localStorage.setItem('addresses', addressInput.value);
+            }
+
+            window.location.href = 'chart.html';
+        }
+    </script>
+
+</body>
+</html>

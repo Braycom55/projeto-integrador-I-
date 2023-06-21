@@ -1,0 +1,322 @@
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: #413f3f;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.5em;
+} 
+
+.header-class {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.header-class div img {
+    position: absolute;
+    text-align: center;
+    width: 254px;
+    height: 104px;
+    left: 56px;
+    top: 25px;
+    background: url(Ecoletar.png);
+}
+
+.pagina-inicial {
+    position: absolute;
+    width: 161px;
+    height: 29px;
+    left: 364px;
+    top: 61px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #8FFF00;
+}
+
+
+
+main {
+    display: flex;
+    justify-content:space-around;
+    margin: 250px;
+}
+
+.page h2 {
+    position: absolute;
+    width: 514px;
+    height: 122px;
+    left: 67px;
+    top: 312px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 61px;
+    color: #F5F5F5;
+    backdrop-filter: blur(2px);
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+}
+
+.page div {
+    position: absolute;
+    width: 287px;
+    height: 100px;
+    left: 116px;
+    top: 652px;
+    background: #FAB34A;
+    border: 2px dashed #FAB34A;
+    box-shadow: 9px 14px 17px -10px #1B1B1B;
+    border-radius: 50px;
+}
+
+.page a {
+    position: absolute;
+    width: 187px;
+    height: 49px;
+    left: 81px;
+    top: 28px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 43px;
+    color: #FFFFFF;
+}
+
+.mundo {
+    position: absolute;
+    text-align: center;
+    width: 582px;
+    height: 316px;
+    left: 475px;
+    top: 148px;
+    background: url(mundo.png);
+    opacity: 0.5;
+}
+
+/*Quem somos*/
+
+.quem-somos {
+    position: absolute;
+    width: 165px;
+    height: 29px;
+    left: 608px;
+    top: 61px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.quem-somos-page {
+    position: absolute;
+    width: 618px;
+    height: 250px;
+    left: 80px;
+    top: 338px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 80px;
+    line-height: 98px;
+    color: #F5F5F5;
+    backdrop-filter: blur(2px);
+}
+
+
+/*Cadatro*/
+
+.form-area {
+    position: absolute;
+    top: 200px;
+    left: 80px;
+}
+
+.form-area h2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 37px;
+    text-align: left;
+    color: #FFFFFF;
+}
+
+.form-area h3 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 37px;
+    text-align: left;
+    color: #FFFFFF;
+}
+.input-area-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-area-email {
+    display: flex;
+    justify-content: space-between;
+}
+
+label {
+    margin-top: 12px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+input {
+    width: 310px;
+    margin-left: 20px;
+    background: #3B3B3B;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+}
+
+.buttons-area {
+    position: absolute;
+    top: 480px;
+    left: 80px;
+    width: 400px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+.buttons-area p {
+    padding: 15px;
+    background-color: #8FFF00;
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.buttons-area .papel{
+    background: #414489;
+    border-radius: 8px;
+}
+.buttons-area .plastico{
+    background: #923434;
+    border-radius: 8px;
+}
+.buttons-area .vidro{
+    background: #4C8531;
+    border-radius: 8px;
+}
+.buttons-area .metal{
+    background: #ABA24D;
+    border-radius: 8px;
+}
+.buttons-area .organico{
+    background: #77472D;
+    border-radius: 8px;
+}
+.buttons-area .madeira{
+    background: #1B1B1B;
+    border-radius: 8px;
+}
+.buttons-area .perigosos{
+    background: #FAB34A;
+    border-radius: 8px;
+    font-size: 20px;
+    line-height: 18px;
+    
+}
+.buttons-area .saude{
+    background: #FFFFFF;
+    border-radius: 8px;
+    color: #3B3B3B;
+}
+.buttons-area .radioativos{
+    background: #8517DC;
+    border-radius: 8px;
+    
+}
+.buttons-area span {
+    position: absolute;
+    top: 263px;
+    left: 300px;
+}
+
+.cadastrar-ponto-coleta {
+    position: absolute;
+    width: 280px;
+    height: 30px;
+    left: 80px;
+    top: 840px;
+    background: #FAB34A;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 36px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+}
+
+
+/*Rastreamento*/
+
+
+.rastreamento{
+    position: absolute;
+    width: 165px;
+    height: 29px;
+    left: 808px;
+    top: 61px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.rastreamentos-estatisticos {
+    position: absolute;
+    width: 165px;
+    height: 29px;
+    left: 1000px;
+    top: 61px;
+    line-height: 18px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

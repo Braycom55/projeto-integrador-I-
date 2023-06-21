@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Relatórios estatísticos</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        canvas {
+            max-width: 700px;
+            max-height: 700px;
+            margin-top: 200px;
+            margin- left: 100px;
+         }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-class">
+              <div>
+                <a href="./index.html" class="title"><img src="./Ecoletar/Ecoletar.png" alt=""></a>
+              </div>
+                <a href="./index.html" class="pagina-inicial" style="color: #FFFFFF;">Página inicial</a>
+                <a href="./rastreamento.html" class="rastreamento" style="color:#FFFFFF">Rastreamento</a>
+                <a href="./relatorios-estatisticos" class="rastreamentos-estatisticos" style="color:#8FFF00 ">Relatórios Estatísticos</a>
+                <a href="./quem-somos.html" class="quem-somos">Quem somos</a>
+        </div>
+    </header>
+    <canvas id="chart"></canvas>
+
+    <button onclick="goBack()">Voltar</button>
+
+    <script>
+        var addresses = localStorage.getItem('addresses');
+
+        if (addresses) {
+            var addressCounts = {};
+            var addressesArray = addresses.split(',');
+
+            addressesArray.forEach(function (address) {
+                var region = address.trim().toLowerCase();
+                if (region in addressCounts) {
+                    addressCounts[region]++;
+                } else {
+                    addressCounts[region] = 1;
+                }
+            });
+
+            var regions = Object.keys(addressCounts);
+            var counts = Object.values(addressCounts);
+
+            var ctx = document.getElementById('chart').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: regions,
+                    datasets: [{
+                        label: 'Contagem de Endereços por Região',
+                        data: counts,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.8)',
+                            'rgba(54, 162, 235, 0.8)',
+                            'rgba(255, 206, 86, 0.8)',
+                            'rgba(75, 192, 192, 0.8)',
+                            'rgba(153, 102, 255, 0.8)',
+                            'rgba(255, 159, 64, 0.8)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            stepSize: 1
+                        }
+                    }
+                }
+            });
+
+            function goBack() {
+                window.location.href = 'index.html';
+            }
+        } else {
+            alert('Nenhum endereço foi inserido ainda.');
+            goBack(); // Redirecionar para a página index.html
+        }
+    </script>
+    
+</body>
+</html>
